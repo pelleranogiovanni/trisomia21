@@ -10,6 +10,7 @@ class PostsController extends Controller
 {
     public function create(){
 
+        $variable2=0;
         return view('admin.post.post');
 
     }
