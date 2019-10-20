@@ -166,6 +166,9 @@ return [
          * Package Service Providers...
          */
 
+        Mews\Captcha\CaptchaServiceProvider::class,
+        Conner\Tagging\Providers\TaggingServiceProvider::class,
+
         /*
          * Application Service Providers...
          */

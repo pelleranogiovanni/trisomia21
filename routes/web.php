@@ -23,14 +23,6 @@ Route::group(['namespace' => 'Admin'], function () {
 
     Route::post('home/contacto', 'MensajesController@store')->name('admin.mensajes.store');
 
-    // Admin auth Routes
-
-    Route::get('admin-login','Auth\LoginController@showLoginForm')->name('admin.login');
-
-    Route::post('admin-login', 'Auth\LoginController@login')->name('admin.login');
-
-    Route::get('admin-logout','Auth\LoginController@logout')->name('admin.logout');
-
     Route::get('admin/home/bandejaentrada', 'MensajesController@index')->name('admin.bandejaentrada')->middleware();
 
     Route::get('admin/home/bandejaentrada/mensaje', 'MensajesController@index')->name('admin.leermensaje')->middleware();
@@ -38,6 +30,14 @@ Route::group(['namespace' => 'Admin'], function () {
     Route::get('admin/home/evento', 'AgendasController@create')->name('admin.evento.create')->middleware();
     
     Route::post('admin/home/evento', 'AgendasController@store')->name('admin.evento.store')->middleware();
+
+    // Admin auth Routes
+
+    Route::get('admin-login','Auth\LoginController@showLoginForm')->name('admin.login');
+
+    Route::post('admin-login', 'Auth\LoginController@login')->name('admin.login');
+
+    Route::get('admin-logout','Auth\LoginController@logout')->name('admin.logout');
     
 });
 

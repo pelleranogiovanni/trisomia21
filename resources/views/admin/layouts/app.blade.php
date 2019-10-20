@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    @include('admin.layouts.head')
+    @include('admin.partials.head')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
-    @include('admin.layouts.header')
-    @include('admin.layouts.sidebar')
+    @include('admin.partials.header')
+    @include('admin.partials.sidebar')
     <div class="wrapper">
         @yield('main-content')
 
-        @include('admin.layouts.footer')
+        @include('admin.partials.footer')
     </div>
+    @include('admin.partials.scripts')
 </body>
 </html>
