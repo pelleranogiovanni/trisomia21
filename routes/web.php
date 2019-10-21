@@ -36,15 +36,13 @@ Route::group(['namespace' => 'Admin'], function () {
     Route::get('admin-login','Auth\LoginController@showLoginForm')->name('admin.login');
 
     Route::post('admin-login', 'Auth\LoginController@login')->name('admin.login');
-
-    Route::get('admin-logout','Auth\LoginController@logout')->name('admin.logout');
     
 });
+
+Route::get('admin-logout','Auth\LoginController@logout')->name('admin.logout');
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
