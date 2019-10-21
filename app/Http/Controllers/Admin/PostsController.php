@@ -15,6 +15,10 @@ class PostsController extends Controller
 
     }
 
+    public function store(PostStoreRequest $request) {
+        return "Almacendo.";
+    }
+
     public function destroy($id) {
         return "Publicación eliminada con éxito";
     }

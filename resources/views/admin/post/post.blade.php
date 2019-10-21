@@ -68,6 +68,11 @@
                               </div>
                             </div>
 
+                            <div class="form-group">
+                              <label for="extracto">Extracto</label>
+                              <input type="text" class="form-control" id="inputExtracto" name="extracto" placeholder="Ingrese un extracto breve para la imagen">
+                            </div>
+
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                 <label class="form-check-label" for="exampleCheck1">Publicar</label>

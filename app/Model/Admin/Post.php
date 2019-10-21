@@ -13,18 +13,14 @@ class Post extends Model
     protected $fillable = [
         'titulo',
         'contenido',
+        'extracto',
         'likes',
         'dislikes',
-        'categoria_id',
         'user_create_id',
         'user_modified_id',
         'imagen_id',
         'slug',
-        'estado'];
-
-    // public function tags(){
-    //     return $this->belongsToMany(Tag::class);
-    // }    
+        'estado']; 
 
     public function user_create(){
         return $this->belongsTo(User::class, 'user_create_id', 'id');
@@ -32,10 +28,6 @@ class Post extends Model
 
     public function user_modified(){
         return $this->belongsTo(User::class, 'user_modified_id', 'id');
-    }
-
-    public function categoria(){
-        return $this->belongsTo(Categoria::class);
     }
 
     public function imagen(){

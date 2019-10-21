@@ -15,9 +15,10 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('titulo', 190);
-            $table->string('slug', 190);
+            $table->string('titulo');
+            $table->string('slug', 191)->unique();
             $table->mediumText('contenido');
+            $table->string('extracto');
             $table->enum('estado', ['PUBLISHED', 'DRAFT'])->default('DRAFT');
             $table->integer('likes');
             $table->integer('dislikes');
@@ -30,11 +31,6 @@ class CreatePostsTable extends Migration
             $table->foreign('imagen_id')
             ->references('id')
             ->on('imagens')
-            ->onDelete('cascade');
-
-            $table->foreign('categoria_id')
-            ->references('id')
-            ->on('categorias')
             ->onDelete('cascade');
 
             $table->foreign('user_create_id')
