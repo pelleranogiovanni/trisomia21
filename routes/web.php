@@ -13,7 +13,11 @@
 
 Route::group(['namespace' => 'Admin'], function () {
 
+    Route::get('admin/post/listado', 'PostsController@index')->name('admin.post.index');
+
     Route::get('admin/post/nuevo', 'PostsController@create')->name('admin.post.create');
+
+    Route::post('admin/post/nuevo', 'PostsController@store')->name('admin.post.store');
 
     Route::get('admin/home', 'HomeController@index')->name('admin.home');
 
@@ -25,7 +29,7 @@ Route::group(['namespace' => 'Admin'], function () {
 
     Route::get('admin/home/bandejaentrada', 'MensajesController@index')->name('admin.bandejaentrada')->middleware();
 
-    Route::get('admin/home/bandejaentrada/mensaje', 'MensajesController@index')->name('admin.leermensaje')->middleware();
+    Route::get('admin/home/bandejaentrada/mensaje/{id}', 'MensajesController@show')->name('admin.leermensaje')->middleware();
 	
     Route::get('admin/home/evento', 'AgendasController@create')->name('admin.evento.create')->middleware();
     

@@ -102,7 +102,7 @@
         <div class="col-md-9">
           <div class="card card-primary card-outline">
             <div class="card-header">
-              <h3 class="card-title">Búzon de entrada</h3>
+              <h3 class="card-title">Buzón de entrada</h3>
 
               <div class="card-tools">
                 <div class="input-group input-group-sm">
@@ -151,7 +151,7 @@
                       </div>
                     </td>
                     <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>
-                    <td class="mailbox-name"><a href="{{ route ('admin.leermensaje', 'id='.$mensaje->id) }}">{{$mensaje->apellido_y_nombres}}</a></td>
+                    <td class="mailbox-name"><a href="{{ route ('admin.leermensaje', $mensaje->id) }}">{{$mensaje->apellido_y_nombres}}</a></td>
                     <td class="mailbox-subject">
                       @if ($mensaje->estado === 'NO_LEIDO')
                         <b>

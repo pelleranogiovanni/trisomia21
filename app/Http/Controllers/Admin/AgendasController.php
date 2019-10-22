@@ -27,7 +27,7 @@ class AgendasController extends Controller
     {
         $cantidad_mensajes = Mensaje::where('estado', 'NO_LEIDO')->count();
 
-        return view('admin.agenda.evento', compact('cantidad_mensajes'));
+        return view('admin.agenda.create', compact('cantidad_mensajes'));
     }
 
     /**

@@ -30,4 +30,5 @@
 <link rel="stylesheet" href="{{asset('dashboard/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css') }}">
 <!-- Bootstrap4 Duallistbox -->
 <link rel="stylesheet" href="{{asset('dashboard/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css') }}">
-  
+<!-- Bootstrap FileInput -->
+<link rel="stylesheet" href="{{asset('dashboard/plugins/bootstrap-fileinput/css/fileinput.css') }}">
