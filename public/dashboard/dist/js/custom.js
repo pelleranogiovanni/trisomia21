@@ -51,11 +51,11 @@
           language: 'es',
           allowedFileExtensions: ['jpg', 'jpeg', 'png'],
           maxFileSize: 1000,
-          maxFileCount: 2,
+          maxFileCount: 1,
           showUpload: false,
           showClose: true,
           initialPreviewAsData: true,
-          dropZoneEnabled: false,
+          dropZoneEnabled: true,
           theme: 'fas',        
   })
 

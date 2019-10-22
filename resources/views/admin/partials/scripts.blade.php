@@ -28,5 +28,7 @@
 <script src="{{ asset('dashboard/plugins/bootstrap-fileinput/js/fileinput.min.js') }}"></script>
 <script src="{{ asset('dashboard/plugins/bootstrap-fileinput/js/locales/es.js') }}"></script>
 <script src="{{ asset('dashboard/plugins/bootstrap-fileinput/themes/fas/theme.min.js') }}"></script>
+<!-- Toastr -->
+<script src="{{ asset('dashboard/plugins/Toastr/toastr.min.js') }}"></script>
 <!-- Scripts personalizados -->
 <script src="{{ asset('dashboard/dist/js/custom.js') }}"></script>

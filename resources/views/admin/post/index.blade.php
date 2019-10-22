@@ -3,98 +3,216 @@
 @section('main-content')
  <!-- Content Wrapper. Contains page content -->
  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-sm-6">
-            <h1>Nueva Publicación</h1>
-          </div>
-         </div>
-      </div><!-- /.container-fluid -->
-    </section>
-    <hr>
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-12 mb-3">
-            <!-- general form elements -->
-            {{-- <div class="card card-primary">
-                    <div class="card-header">
-                      <h3 class="card-title">Nueva Publicación</h3>
-                    </div>
-                    <!-- /.card-header --> --}}
-                    <!-- form start -->
-                    <form role="form" action="" method="">
-                      @csrf
-                      <!-- card-body -->
-                      {{-- <div class="card-body"> --}}
-                        <div class="form-group">
-                          <label for="titulo">Título</label>
-                          <input type="text" class="form-control" id="inputTitulo" name="titulo" placeholder="Ingrese el título de la publicación">
-                        </div>
-                        <div class="form-group" hidden>
-                          <label for="exampleInputPassword1">Ruta amigable</label>
-                          <input type="text" class="form-control" id="exampleInputPassword1" name="slug" placeholder="">
-                        </div>
-                        
-                       
-                         <div class="form-group">
-                            <label>
-                                Contenido
-                              </label>
-                            <div class="mb-3">
-                              <textarea class="textarea" placeholder="Place some text here"
-                                        style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-                            </div>
-                          </div>
-
-                          <div class="form-group">
-                              <label for="exampleInputPassword1">Etiquetas</label>
-                              <input type="text" class="form-control" id="tags" name="tags" data-role="tagsinput" placeholder="Ej.: Evento, Inclusion, Torneo">
-                            </div>
-                          
-                          <div class="form-group">
-                              <label for="exampleInputFile">Imagen</label>
-                              <div class="input-group">
-                                <div class="custom-file">
-                                  <input type="file" class="custom-file-input" id="exampleInputFile">
-                                  <label class="custom-file-label" for="exampleInputFile">Seleccionar imagen</label>
-                                </div>
-                                <div class="input-group-append">
-                                  <span class="input-group-text" id="">Subido</span>
-                                </div>
-                              </div>
-                            </div>
-
-                            <div class="form-group">
-                              <label for="extracto">Extracto</label>
-                              <textarea type="" class="form-control" id="inputExtracto" name="extracto" placeholder="Ingrese un extracto breve para la imagen" rows="5"></textarea>
-                            </div>
-
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Publicar</label>
-                              </div>
-
-                            {{-- </div> --}}
-                      <!-- /.card-body -->
-      <hr>
-                      {{-- <div class="card-footer"> --}}
-                        <button type="submit" class="btn btn-primary float-right">Crear Publicación</button>
-                      {{-- </div> --}}
-                    </form>
-                  {{-- </div> --}}
-                  <!-- /.card -->
-          
+  <div class="col-md-8 col-md-offset-2">
+    <h2 class="text-center">Manage Posts</h2>
+    <br />
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <ul>
+                <li><i class="fa fa-file-text-o"></i> All the current Posts</li>
+                <a href="#" class="add-modal"><li>Add a Post</li></a>
+            </ul>
         </div>
-        <!-- /.col-->
-      </div>
-      <!-- ./row -->
+
+        <div class="panel-body">
+                <table class="table table-striped table-bordered table-hover" id="postTable" style="visibility: hidden;">
+                    <thead>
+                        <tr>
+                            <th valign="middle">ID</th>
+                            <th>Title</th>
+                            <th>Content</th>
+                            <th>Published?</th>
+                            <th>Last updated</th>
+                            <th>Actions</th>
+                        </tr>
+                        {{ csrf_field() }}
+                    </thead>
+                    <tbody>
+                        @foreach($publicaciones as $post)
+                            <tr class="item{{$post->id}} @if($post->is_published) warning @endif">
+                                <td>{{$post->id}}</td>
+                                <td>{{$post->title}}</td>
+                                <td>
+                                    {{App\Post::getExcerpt($post->content)}}
+                                </td>
+                                <td class="text-center"><input type="checkbox" class="published" data-id="{{$post->id}}" @if ($post->is_published) checked @endif></td>
+                                <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $post->updated_at)->diffForHumans() }}</td>
+                                <td>
+                                    <button class="show-modal btn btn-success" data-id="{{$post->id}}" data-title="{{$post->title}}" data-content="{{$post->content}}">
+                                    <span class="glyphicon glyphicon-eye-open"></span> Show</button>
+                                    <button class="edit-modal btn btn-info" data-id="{{$post->id}}" data-title="{{$post->title}}" data-content="{{$post->content}}">
+                                    <span class="glyphicon glyphicon-edit"></span> Edit</button>
+                                    <button class="delete-modal btn btn-danger" data-id="{{$post->id}}" data-title="{{$post->title}}" data-content="{{$post->content}}">
+                                    <span class="glyphicon glyphicon-trash"></span> Delete</button>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+        </div><!-- /.panel-body -->
+    </div><!-- /.panel panel-default -->
+</div><!-- /.col-md-8 -->
+
+<!-- Modal form to add a post -->
+<div id="addModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="title">Title:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="title_add" autofocus>
+                            <small>Min: 2, Max: 32, only text</small>
+                            <p class="errorTitle text-center alert alert-danger hidden"></p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="content">Content:</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" id="content_add" cols="40" rows="5"></textarea>
+                            <small>Min: 2, Max: 128, only text</small>
+                            <p class="errorContent text-center alert alert-danger hidden"></p>
+                        </div>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success add" data-dismiss="modal">
+                        <span id="" class='glyphicon glyphicon-check'></span> Add
+                    </button>
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">
+                        <span class='glyphicon glyphicon-remove'></span> Close
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
-    </section>
-    <!-- /.content -->
+</div>
+
+<!-- Modal form to show a post -->
+<div id="showModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="id">ID:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="id_show" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="title">Title:</label>
+                        <div class="col-sm-10">
+                            <input type="name" class="form-control" id="title_show" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="content">Content:</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" id="content_show" cols="40" rows="5" disabled></textarea>
+                        </div>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">
+                        <span class='glyphicon glyphicon-remove'></span> Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal form to edit a form -->
+<div id="editModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="id">ID:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="id_edit" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="title">Title:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="title_edit" autofocus>
+                            <p class="errorTitle text-center alert alert-danger hidden"></p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="content">Content:</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" id="content_edit" cols="40" rows="5"></textarea>
+                            <p class="errorContent text-center alert alert-danger hidden"></p>
+                        </div>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary edit" data-dismiss="modal">
+                        <span class='glyphicon glyphicon-check'></span> Edit
+                    </button>
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">
+                        <span class='glyphicon glyphicon-remove'></span> Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal form to delete a form -->
+<div id="deleteModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+                <h3 class="text-center">Are you sure you want to delete the following post?</h3>
+                <br />
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="id">ID:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="id_delete" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="title">Title:</label>
+                        <div class="col-sm-10">
+                            <input type="name" class="form-control" id="title_delete" disabled>
+                        </div>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger delete" data-dismiss="modal">
+                        <span id="" class='glyphicon glyphicon-trash'></span> Delete
+                    </button>
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">
+                        <span class='glyphicon glyphicon-remove'></span> Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
   </div>
   <!-- /.content-wrapper -->
 @endsection
