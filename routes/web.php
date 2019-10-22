@@ -30,9 +30,9 @@ Route::group(['namespace' => 'Admin'], function () {
     Route::get('admin/home/bandejaentrada', 'MensajesController@index')->name('admin.bandejaentrada')->middleware();
 
     Route::get('admin/home/bandejaentrada/mensaje/{id}', 'MensajesController@show')->name('admin.leermensaje')->middleware();
-	
+
     Route::get('admin/home/evento', 'AgendasController@create')->name('admin.evento.create')->middleware();
-    
+
     Route::post('admin/home/evento', 'AgendasController@store')->name('admin.evento.store')->middleware();
 
     // Admin auth Routes
@@ -40,13 +40,13 @@ Route::group(['namespace' => 'Admin'], function () {
     Route::get('admin-login','Auth\LoginController@showLoginForm')->name('admin.login');
 
     Route::post('admin-login', 'Auth\LoginController@login')->name('admin.login');
-    
+
 });
 
 Route::get('admin-logout','Auth\LoginController@logout')->name('admin.logout');
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('web.index');
 });
 
 Auth::routes();
