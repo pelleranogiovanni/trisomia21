@@ -1,14 +1,14 @@
   <li class="nav-item">
-    <a href="{{ route('admin.post.create' )}}" class="nav-link active">
+    <a href="{{ route('admin.post.index' )}}" class="nav-link active">
       <i class="far fa-circle nav-icon"></i>
       <p>Listado</p>
     </a>
   </li>
 
   <li class="nav-item">
-    <a href="{{ route('admin.categoria.categoria' )}}" class="nav-link">
+    <a href="{{ route('admin.post.create' )}}" class="nav-link">
       <i class="far fa-circle nav-icon"></i>
-      <p>Categorías</p>
+      <p>Nueva publicación</p>
     </a>
   </li>
 
