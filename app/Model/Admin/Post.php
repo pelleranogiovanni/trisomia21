@@ -22,6 +22,10 @@ class Post extends Model
         'slug',
         'estado']; 
 
+    public function slug(){
+         return $this->slug = Str::slug($this->titulo); 
+    }
+
     public function user_create(){
         return $this->belongsTo(User::class, 'user_create_id', 'id');
     }

@@ -32,7 +32,7 @@ class PostsController extends Controller
         $etiquetas = explode(',', $request->tags);
 
         // Post::create($request->all());
-       // Post::create($request->all());
+        Post::create($request->all());
         dd($request);
         // $publicacion = new Post;
 
@@ -60,9 +60,5 @@ class PostsController extends Controller
 
     public function destroy($id) {
         return "Publicación eliminada con éxito";
-    }
-
-    public function publicados(){
-        return Post::where('estado', 'PUBLISHED')->paginate(10);
     }
 }

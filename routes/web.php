@@ -50,3 +50,5 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+
+Route::get('publicados', 'Admin\PostsController@publicados')->name('web.publicados');
