@@ -16,6 +16,8 @@
                   <ul id="nav-mobile" class="right">
                     <li class="active"><a href="sass.html">Home</a></li>
                     <li><a href="#">Contacto</a></li>
+                    <li><a href="{{ route('login')}}">Ingresar</a></li>
+                    <li><a href="{{ route('register') }}"">Registrar</a></li>
                   </ul>
                 </div>
         </nav>

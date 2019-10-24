@@ -20,18 +20,10 @@ class CreatePostsTable extends Migration
             $table->mediumText('contenido');
             $table->string('extracto');
             $table->enum('estado', ['PUBLISHED', 'DRAFT'])->default('DRAFT');
-            $table->integer('likes');
-            $table->integer('dislikes');
-            $table->unsignedBigInteger('categoria_id');
-            $table->unsignedBigInteger('imagen_id')->nullable();
+            $table->string('ruta_imagen')->nullable();
             $table->unsignedBigInteger('user_create_id');
-            $table->unsignedBigInteger('user_modified_id')->default(0);
+            $table->unsignedBigInteger('user_modified_id')->nullable();
             $table->timestamps();
-
-            $table->foreign('imagen_id')
-            ->references('id')
-            ->on('imagens')
-            ->onDelete('cascade');
 
             $table->foreign('user_create_id')
             ->references('id')
