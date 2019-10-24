@@ -21,57 +21,7 @@
         <div class="col-md-12 mb-3">
             <!-- general form elements -->
                     <!-- form start -->
-                    <form class="form-group" role="form" action="{{ route('admin.post.store') }}" method="POST" enctype="multipart/form-data">
-                      @csrf
-                      <!-- card-body -->
-                      {{-- <div class="card-body"> --}}
-                        <div class="form-group">
-                          <label for="titulo">Título</label>
-                          <input type="text" class="form-control" id="inputTitulo" name="titulo" placeholder="Ingrese el título de la publicación">
-                        </div>
-                        <div class="form-group" hidden>
-                          <label for="exampleInputPassword1">Ruta amigable</label>
-                          <input type="text" class="form-control" id="exampleInputPassword1" name="slug" placeholder="">
-                        </div>
-                        
-                       
-                         <div class="form-group">
-                            <label>
-                                Contenido
-                              </label>
-                            <div class="mb-3">
-                              <textarea class="textarea" placeholder="Place some text here"
-                                        style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-                            </div>
-                          </div>
-
-                          <div class="form-group">
-                              <label for="exampleInputPassword1">Etiquetas</label>
-                              <input type="text" class="form-control" id="tags" name="tags" data-role="tagsinput" placeholder="Ej.: Evento, Inclusion, Torneo">
-                            </div>
-                          
-                          <div class="form-group">
-                              <label for="exampleInputFile">Imagen</label>
-                              <input type="file" class="file" id="imagen" name="ruta_imagen">
-                          </div>
-
-                            <div class="form-group">
-                              <label for="extracto">Extracto</label>
-                              <textarea type="" class="form-control" id="inputExtracto" name="extracto" placeholder="Ingrese un extracto breve para la imagen" rows="5"></textarea>
-                            </div>
-
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Publicar</label>
-                              </div>
-
-                            {{-- </div> --}}
-                      <!-- /.card-body -->
-      <hr>
-                      {{-- <div class="card-footer"> --}}
-                        <button type="submit" class="btn btn-primary float-right">Crear Publicación</button>
-                      {{-- </div> --}}
-                    </form>
+                   @include('admin.post.partials.form')
                   {{-- </div> --}}
                   <!-- /.card -->
           

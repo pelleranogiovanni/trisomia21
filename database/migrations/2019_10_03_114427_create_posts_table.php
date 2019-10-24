@@ -22,10 +22,9 @@ class CreatePostsTable extends Migration
             $table->enum('estado', ['PUBLISHED', 'DRAFT'])->default('DRAFT');
             $table->integer('likes');
             $table->integer('dislikes');
-            $table->unsignedBigInteger('categoria_id');
             $table->unsignedBigInteger('imagen_id')->nullable();
             $table->unsignedBigInteger('user_create_id');
-            $table->unsignedBigInteger('user_modified_id')->default(0);
+            $table->unsignedBigInteger('user_modified_id')->nullable();
             $table->timestamps();
 
             $table->foreign('imagen_id')

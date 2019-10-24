@@ -33,4 +33,8 @@ class Post extends Model
     public function imagen(){
         return $this->belongsTo(Imagen::class);
     }
+
+    public static function setImagen($imagen) {
+        return $imagen;
+    }
 }
