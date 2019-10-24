@@ -65,4 +65,5 @@ class PostsController extends Controller
     public function publicados(){
         return Post::where('estado', 'PUBLISHED')->paginate(10);
     }
+
 }
