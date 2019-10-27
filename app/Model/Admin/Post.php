@@ -3,8 +3,12 @@
 namespace App\Model\Admin;
 
 use App\Model\Admin\User;
+use Illuminate\Support\Str;
 use Conner\Tagging\Taggable;
+use Intervention\Image\Facades\Image;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Sotrage;
+use Illuminate\Support\Facades\Storage;
 
 class Post extends Model
 {
@@ -14,11 +18,9 @@ class Post extends Model
         'titulo',
         'contenido',
         'extracto',
-        'likes',
-        'dislikes',
         'user_create_id',
         'user_modified_id',
-        'imagen_id',
+        'ruta_imagen',
         'slug',
         'estado']; 
 
@@ -38,7 +40,23 @@ class Post extends Model
         return $this->belongsTo(Imagen::class);
     }
 
-    public static function setImagen($imagen) {
-        return $imagen;
+    public static function setImagen($imagen, $actual = false) {
+        if ($imagen){
+            if ($actual) {
+                Storage::disk('public')->delete("images/posts/$actual");
+            }
+
+            $nombreImagen = Str::random(20).'jpg';
+            $imagenManipulada = Image::make($imagen)->encode('jpg', 75);
+            $imagenManipulada->resize(800, 600, function ($constraint) {
+                $constraint->upsize();
+            });
+
+            Storage::disk('public')->put("images/posts/$nombreImagen", $imagenManipulada->stream());
+
+            return $nombreImagen;
+        } else {
+                return false;
+        }
     }
 }
