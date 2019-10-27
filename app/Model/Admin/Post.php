@@ -46,9 +46,10 @@ class Post extends Model
                 Storage::disk('public')->delete("images/posts/$actual");
             }
 
-            $nombreImagen = Str::random(20).'jpg';
+            $nombreImagen = Str::random(20).'.jpg';
             $imagenManipulada = Image::make($imagen)->encode('jpg', 75);
-            $imagenManipulada->resize(800, 600, function ($constraint) {
+            $imagenManipulada->resize(800, null, function ($constraint) {
+                $constraint->aspectRatio();
                 $constraint->upsize();
             });
 
