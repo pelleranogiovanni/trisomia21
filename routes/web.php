@@ -58,3 +58,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('pensiones', 'Admin\PensionsController');
 Route::resource('obrassociales', 'Admin\HealthinsurancesController');
+Route::post('buscar', 'Admin\PensionsController@buscar')->name('buscar');
