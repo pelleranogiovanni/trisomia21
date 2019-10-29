@@ -32,3 +32,5 @@
 <script src="{{ asset('dashboard/plugins/Toastr/toastr.min.js') }}"></script>
 <!-- Scripts personalizados -->
 <script src="{{ asset('dashboard/dist/js/custom.js') }}"></script>
+<!-- Select2 js -->
+<script src="{{ asset('dashboard/plugins/select2/js/select2.js') }}"></script>

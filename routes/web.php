@@ -25,15 +25,16 @@ Route::group(['middleware' => 'auth'], function () {
 
 		Route::get('admin/home', 'HomeController@index')->name('admin.home');
 
-		Route::get('admin/tag', 'TagsController@index')->name('admin.tag.tag');
+		//Route::get('admin/tag', 'TagsController@index')->name('admin.tag.tag');
 
-		Route::get('admin/categoria', 'CategoriasController@index')->name('admin.categoria.categoria');
+		//Route::get('admin/categoria', 'CategoriasController@index')->name('admin.categoria.categoria');
 
 		Route::post('admin/home/contacto', 'MensajesController@store')->name('admin.mensajes.store');
 
 		Route::get('admin/home/bandejaentrada', 'MensajesController@index')->name('admin.bandejaentrada')->middleware();
 
 		Route::get('admin/home/bandejaentrada/mensaje/{id}', 'MensajesController@show')->name('admin.leermensaje')->middleware();
+
 
 		// Rutas de Eventos (Agenda)
 
@@ -50,6 +51,13 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::post('admin-login', 'Auth\LoginController@login')->name('admin.login');
 
 	});
+
+    // Route::get('admin/home/bandejaentrada/mensaje', 'MensajesController@index')->name('admin.leermensaje')->middleware();
+
+    // Route::get('admin/home/evento', 'AgendasController@create')->name('admin.evento.create')->middleware();
+
+    // Route::post('admin/home/evento', 'AgendasController@store')->name('admin.evento.store')->middleware();
+
 });
 
 Route::get('admin-logout','Auth\LoginController@logout')->name('admin.logout');
@@ -57,6 +65,24 @@ Route::get('admin-logout','Auth\LoginController@logout')->name('admin.logout');
 Route::get('/', function () {
     return view('web.index');
 });
+
+Route::get('crearcensado', function () {
+    return view('admin.censo.crearcensado');
+});
+
+Route::get('listarcensado', function () {
+    return view('admin.censo.listarcensado');
+});
+
+Route::get('creartutor', function () {
+    return view('admin.censo.creartutor');
+});
+
+Route::get('listartutor', function () {
+    return view('admin.censo.listartutor');
+});
+
+
 
 Auth::routes();
 

@@ -29,9 +29,9 @@
         </li>
       </ul>
       <ul class="nav nav-treeview">
-        <li class="nav-item has-treeview menu-open">
+        <li class="nav-item has-treeview menu-closed">
           <a href="#" class="nav-link">
-            <i class="nav-icon fa fa-calendar" aria-hidden="true"></i>
+            <i class="nav-icon far fa-calendar-alt" aria-hidden="true"></i>
             <p>
               Eventos
               <i class="right fas fa-angle-left"></i>
@@ -45,6 +45,9 @@
         </li>
       </li>
     </ul>
+
+      @include('admin.partials.sidebarmenucensados')
+
       <li class="nav-item has-treeview menu-closed">
         <a href="#" class="nav-link">
           <i class="nav-icon fas fa-edit"></i>
