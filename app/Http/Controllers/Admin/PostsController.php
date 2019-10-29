@@ -71,8 +71,8 @@ class PostsController extends Controller
     public function destroy($id) {
         $publicacion = Post::findOrFail($id);
 
-        if (Storage::exists($publicacion->ruta_imagen)){
-            Storage::delete($publicacion->ruta_imagen);
+        if (Storage::disk('public')->exists("images/posts/$publicacion->ruta_imagen")){
+            Storage::disk('public')->delete("images/posts/$publicacion->ruta_imagen");
         }
 
         $publicacion->delete();
