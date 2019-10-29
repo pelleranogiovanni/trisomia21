@@ -1,5 +1,9 @@
-<form class="form-group" role="form" action="{{ route('admin.post.store') }}" method="POST" enctype="multipart/form-data">
-    @csrf
+@if (isset($publicacion))
+    <form class="form-group" role="form" action="{{ route('admin.post.update') }}" method="POST" enctype="multipart/form-data">
+@else
+    <form class="form-group" role="form" action="{{ route('admin.post.store') }}" method="POST" enctype="multipart/form-data">
+@endif
+  @csrf
     <!-- card-body -->
     {{-- <div class="card-body"> --}}
       <div class="form-group">

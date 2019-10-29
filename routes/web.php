@@ -51,13 +51,6 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::post('admin-login', 'Auth\LoginController@login')->name('admin.login');
 
 	});
-
-    // Route::get('admin/home/bandejaentrada/mensaje', 'MensajesController@index')->name('admin.leermensaje')->middleware();
-
-    // Route::get('admin/home/evento', 'AgendasController@create')->name('admin.evento.create')->middleware();
-
-    // Route::post('admin/home/evento', 'AgendasController@store')->name('admin.evento.store')->middleware();
-
 });
 
 Route::get('admin-logout','Auth\LoginController@logout')->name('admin.logout');

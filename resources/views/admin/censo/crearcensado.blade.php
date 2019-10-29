@@ -1,9 +1,10 @@
-@extends('layouts.dashboard')
-@section('content')
+@extends('admin.layouts.app')
+@section('main-content')
+<div class="content-wrapper">
 <div class="container">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <!-- card -->
                 <div class="card card-primary">
                     <div class="card-header">
@@ -415,6 +416,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 
 
