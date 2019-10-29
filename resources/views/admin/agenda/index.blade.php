@@ -39,14 +39,10 @@
                                 <td>
                                     <a class="btn btn-success" href="" data-id="{{$post->id}}" data-title="{{$post->titulo}}" data-content="{{$post->contenido}}">
                                     <span class="fa fa-eye"></span></a>
-                                    <a class="edit-modal btn btn-info" href="" data-id="{{$post->id}}">
-                                    <span class="fa fa-edit"></span></a>
-                                    <form action="{{ route('admin.post.destroy', $post->id)}}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                    <button type="submit" class="btn btn-danger" data-id="{{$post->id}}">
-                                    <span class="fa fa-trash"></span></button>
-                                    </form>
+                                    <a class="edit-modal btn btn-info" href="" data-id="{{$post->id}}" data-title="{{$post->titulo}}" data-content="{{$post->contenido}}">
+                                    <span class="fa fa-edit"></span> Editar</a>
+                                    <a class="delete-modal btn btn-danger" href="" data-id="{{$post->id}}" data-title="{{$post->titulo}}" data-content="{{$post->contenido}}">
+                                    <span class="fa fa-trash"></span> Eliminar</a>
                                 </td>
                             </tr>
                         @endforeach

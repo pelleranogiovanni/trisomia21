@@ -59,4 +59,6 @@
           theme: 'fas',        
   })
 
+      $('.js-example-basic-multiple').select2();
+
 })

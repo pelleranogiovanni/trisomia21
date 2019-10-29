@@ -15,7 +15,7 @@ class AgendasController extends Controller
      */
     public function index()
     {
-		
+		return view('admin.evento.index');
     }
 
     /**
@@ -25,9 +25,7 @@ class AgendasController extends Controller
      */
     public function create()
     {
-        $cantidad_mensajes = Mensaje::where('estado', 'NO_LEIDO')->count();
-
-        return view('admin.agenda.create', compact('cantidad_mensajes'));
+       
     }
 
     /**
