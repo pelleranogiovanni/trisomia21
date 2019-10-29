@@ -13,11 +13,15 @@
 Route::group(['middleware' => 'auth'], function () {
 	Route::group(['namespace' => 'Admin'], function () {
 
+		// Rutas de Publicaciones (Posts)
+
 		Route::get('admin/post/listado', 'PostsController@index')->name('admin.post.index');
 
 		Route::get('admin/post/nuevo', 'PostsController@create')->name('admin.post.create');
 
 		Route::post('admin/post/nuevo', 'PostsController@store')->name('admin.post.store');
+
+		Route::delete('admin/post/listado/{id}', 'PostsController@destroy')->name('admin.post.destroy');
 
 		Route::get('admin/home', 'HomeController@index')->name('admin.home');
 
@@ -31,9 +35,13 @@ Route::group(['middleware' => 'auth'], function () {
 
 		Route::get('admin/home/bandejaentrada/mensaje/{id}', 'MensajesController@show')->name('admin.leermensaje')->middleware();
 
-		Route::get('admin/home/evento', 'AgendasController@create')->name('admin.evento.create')->middleware();
+		// Rutas de Eventos (Agenda)
 
-		Route::post('admin/home/evento', 'AgendasController@store')->name('admin.evento.store')->middleware();
+		Route::get('admin/home/evento', 'AgendasController@index')->name('admin.evento.index')->middleware();
+
+		Route::get('admin/home/evento/nuevo', 'AgendasController@create')->name('admin.evento.create')->middleware();
+
+		Route::post('admin/home/evento/nuevo', 'AgendasController@store')->name('admin.evento.store')->middleware();
 
 		// Admin auth Routes
 

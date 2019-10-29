@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\PostStoreRequest;
+use Illuminate\Support\Facades\Storage;
 
 class PostsController extends Controller
 {
@@ -52,11 +53,31 @@ class PostsController extends Controller
 
         $publicacion->save();
 
-        return redirect('admin/home')->with('status', 'Profile updated!');
+        return redirect('admin/home')->with('status', 'La publicación se ha creado satisfactoriamente.');
+    }
+
+    /**
+     * Actualiza el recurso especificado en el almacenamiento.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
     }
 
     public function destroy($id) {
-        return "Publicación eliminada con éxito";
+        $publicacion = Post::findOrFail($id);
+
+        if (Storage::exists($publicacion->ruta_imagen)){
+            Storage::delete($publicacion->ruta_imagen);
+        }
+
+        $publicacion->delete();
+
+        return redirect('admin/home')->with('status', 'La publicación ha sido eliminada con éxito.');
     }
 
     public function publicados(){

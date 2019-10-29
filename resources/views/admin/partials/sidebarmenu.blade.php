@@ -16,7 +16,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>
-                Posts
+                Publicaciones
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -28,6 +28,23 @@
           </li>
         </li>
       </ul>
+      <ul class="nav nav-treeview">
+        <li class="nav-item has-treeview menu-open">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fa fa-calendar" aria-hidden="true"></i>
+            <p>
+              Eventos
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+
+            @include('admin.partials.sidebarmenuagenda')
+            
+          </ul>
+        </li>
+      </li>
+    </ul>
       <li class="nav-item has-treeview menu-closed">
         <a href="#" class="nav-link">
           <i class="nav-icon fas fa-edit"></i>
