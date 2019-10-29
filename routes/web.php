@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -79,4 +78,12 @@ Route::get('listartutor', function () {
 
 Auth::routes();
 
+
 Route::get('publicados', 'Admin\PostsController@publicados')->name('web.publicados');
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::resource('pensiones', 'Admin\PensionsController');
+Route::resource('obrassociales', 'Admin\HealthinsurancesController');
+Route::post('buscar', 'Admin\PensionsController@buscar')->name('buscar');

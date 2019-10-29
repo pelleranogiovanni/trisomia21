@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Storage;
 
 class PostsController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
@@ -83,4 +82,5 @@ class PostsController extends Controller
     public function publicados(){
         return Post::where('estado', 'PUBLISHED')->paginate(10);
     }
+
 }
