@@ -15,11 +15,11 @@ class CreateRegisteredTutorTable extends Migration
     {
         Schema::create('registered_tutor', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('censado_id');
+            $table->unsignedBigInteger('registered_id');
             $table->unsignedBigInteger('tutor_id');
             $table->timestamps();
 
-            $table->foreign('censado_id')->references('id')->on('registereds');
+            $table->foreign('registered_id')->references('id')->on('registereds');
             $table->foreign('tutor_id')->references('id')->on('tutors');
         });
     }

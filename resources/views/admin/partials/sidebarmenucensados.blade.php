@@ -8,13 +8,13 @@
     </a>
     <ul class="nav nav-treeview">
       <li class="nav-item">
-        <a href="{{ route('admin.censo.create') }}" class="nav-link">
+        <a href="{{ route('censado.create') }}" class="nav-link">
             <i class="far fa-id-badge nav-icon"></i>
           <p>Formulario Censo</p>
         </a>
       </li>
       <li class="nav-item">
-        <a href="#" class="nav-link">
+        <a href="{{ route('censado.index') }}" class="nav-link">
             <i class="far fa-address-card nav-icon"></i>
           <p>Lista del censados</p>
         </a>

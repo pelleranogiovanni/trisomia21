@@ -30,38 +30,43 @@ class Registered extends Model
         'numerolegajo'
     ];
 
-    public function localidad(){
-        $this->belongsTo('App\Localidad');
+    public function localidad()
+    {
+        return $this->belongsTo('App\Location');
     }
 
-    public function situacionresidencial(){
-        $this->belongsTo('App\Residence');
+    public function situacionresidencial()
+    {
+        return $this->belongsTo('App\Residence');
     }
 
-    public function obrasocial(){
-        $this->belongsTo('App\Healthinsurance');
+    public function obrasocial()
+    {
+        return $this->belongsTo('App\Healthinsurance');
     }
 
-    public function schoolings(){
-        $this->belongsToMany('App\Schooling');
+    public function schoolings()
+    {
+        return $this->belongsToMany('App\Schooling');
     }
 
-    public function tutors(){
-        $this->belongsToMany('App\Tutor');
+    public function tutors()
+    {
+        return $this->belongsToMany('App\Tutor');
     }
 
-    public function pathologies(){
-        $this->belongsToMany('App\Pathologie');
+    public function pathologies()
+    {
+        return $this->belongsToMany('App\Pathologie');
     }
 
-    public function pensions(){
-        $this->belongsToMany('App\Pension');
+    public function pensions()
+    {
+        return $this->belongsToMany('App\Pension');
     }
 
-    public function treatments(){
-        $this->belongsToMany('App\Treatment');
+    public function treatments()
+    {
+        return $this->belongsToMany('App\Treatment');
     }
-
-
-
 }

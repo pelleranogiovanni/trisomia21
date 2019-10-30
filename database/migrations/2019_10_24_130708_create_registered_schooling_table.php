@@ -15,12 +15,12 @@ class CreateRegisteredSchoolingTable extends Migration
     {
         Schema::create('registered_schooling', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('escolaridad_id');
-            $table->unsignedBigInteger('censado_id');
+            $table->unsignedBigInteger('schooling_id');
+            $table->unsignedBigInteger('registered_id');
             $table->timestamps();
 
-            $table->foreign('escolaridad_id')->references('id')->on('schoolings');
-            $table->foreign('censado_id')->references('id')->on('registereds');
+            $table->foreign('schooling_id')->references('id')->on('schoolings');
+            $table->foreign('registered_id')->references('id')->on('registereds');
         });
     }
 

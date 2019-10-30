@@ -15,13 +15,12 @@ class CreateRegisteredTreatmentTable extends Migration
     {
         Schema::create('registered_treatment', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('censado_id');
-            $table->unsignedBigInteger('tratamiento_id');
+            $table->unsignedBigInteger('registered_id');
+            $table->unsignedBigInteger('treatment_id');
             $table->timestamps();
 
-            $table->foreign('censado_id')->references('id')->on('registereds');
-            $table->foreign('tratamiento_id')->references('id')->on('treatments');
-
+            $table->foreign('registered_id')->references('id')->on('registereds');
+            $table->foreign('treatment_id')->references('id')->on('treatments');
         });
     }
 

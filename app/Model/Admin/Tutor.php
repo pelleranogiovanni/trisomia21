@@ -23,11 +23,18 @@ class Tutor extends Model
     ];
 
 
-    public function localidad(){
-        $this->belongsTo('App\Localidad');
+    public function localidad()
+    {
+        return $this->belongsTo('App\Localidad');
     }
 
-    public function obrasocial(){
-        $this->belongsTo('App\Healthinsurance');
+    public function obrasocial()
+    {
+        return $this->belongsTo('App\Healthinsurance');
+    }
+
+    public function registereds()
+    {
+        return $this->belongsToMany('App\Registered');
     }
 }

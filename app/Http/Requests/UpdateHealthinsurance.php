@@ -24,7 +24,7 @@ class UpdateHealthinsurance extends FormRequest
     public function rules()
     {
         return [
-            'obrasocial' => 'required|min:3|unique:healthinsurances',
+            'obrasocial' => 'required|min:6|unique:healthinsurances',
         ];
     }
 }

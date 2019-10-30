@@ -24,8 +24,8 @@
     </div>
     <div class="parallax-container">
         <div class="parallax"><img src="{{asset ('web/img/fondo.jpg')}}"></div>
-            <h1 class="center-align white-text">Hola amis</h1>
-            <h5 class="center-align white-text">Como estas?</h5>
+            <h1 class="center-align white-text">Trisomia21 Villa Ángela</h1>
+            <h5 class="center-align white-text">España</h5>
           </div>
     <div class="container">
 

@@ -24,7 +24,7 @@ class StoreHealthinsurance extends FormRequest
     public function rules()
     {
         return [
-            'obrasocial' => 'required|min:3|max:225|unique:healthinsurances',
+            'obrasocial' => 'required|min:6|unique:healthinsurances',
         ];
     }
 }

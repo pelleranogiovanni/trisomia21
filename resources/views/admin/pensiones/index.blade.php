@@ -13,7 +13,6 @@
                         <input type="text" name="buscar">
                         <button type="submit">Buscar</button>
                     </form>
-
                 </div>
 
                 <div class="card-body">

@@ -15,11 +15,11 @@ class CreatePensionRegisteredTable extends Migration
     {
         Schema::create('pension_registered', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('censado_id');
+            $table->unsignedBigInteger('registered_id');
             $table->unsignedBigInteger('pension_id');
             $table->timestamps();
 
-            $table->foreign('censado_id')->references('id')->on('registereds');
+            $table->foreign('registered_id')->references('id')->on('registereds');
             $table->foreign('pension_id')->references('id')->on('pensions');
         });
     }

@@ -58,7 +58,7 @@ Route::group(['namespace' => 'Web'], function () {
 	/	Las publicaciones se retornan paginadas.
 	/	También retorna una colección de datos para la agenda, denominado $eventos.
 	*/
-	Route::get('/home', 'Admin\PostsController@publicados')->name('web.home');
+	Route::get('/home', 'HomeController@index')->name('web.home');
 
 });
 
@@ -72,17 +72,27 @@ Route::get('crearcensado', function () {
     return view('admin.censo.crearcensado');
 })->name('admin.censo.create');
 
-Route::get('listarcensado', function () {
-    return view('admin.censo.listarcensado');
-});
+//Ruta de recursos para Censados
+Route::resource('censado', 'Admin\RegisteredsController');
 
-Route::get('creartutor', function () {
-    return view('admin.censo.creartutor');
-});
+//Ruta de recursos para Tutores
+Route::resource('tutor', 'Admin\TutorsController');
 
-Route::get('listartutor', function () {
-    return view('admin.censo.listartutor');
-});
+//Ruta de recursos para Voluntarios
+Route::resource('voluntario', 'Admin\VolunteersController');
+
+
+// Route::get('listarcensado', function () {
+//     return view('admin.censo.listarcensado');
+// });
+
+// Route::get('creartutor', function () {
+//     return view('admin.censo.creartutor');
+// });
+
+// Route::get('listartutor', function () {
+//     return view('admin.censo.listartutor');
+// });
 
 
 
