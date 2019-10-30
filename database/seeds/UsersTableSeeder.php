@@ -1,6 +1,7 @@
 <?php
 
 use App\Model\Admin\User;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder
@@ -12,6 +13,8 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        factory(User::class, 29)->create();
+        
         User::create([
             'name' => 'Administrador',
             'slug' => Str::slug('Administrador'),

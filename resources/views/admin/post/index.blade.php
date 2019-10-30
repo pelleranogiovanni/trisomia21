@@ -35,16 +35,18 @@
                                     {!! App\Model\Admin\Post::getExcerpt($post->contenido) !!}
                                 </td>
                                 <td class="text-center"><input type="checkbox" class="published" data-id="{{$post->id}}" @if ($post->estado == 'PUBLISHED') checked @endif></td>
-                                <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $post->updated_at)->diffForHumans() }}</td>
+                                <td data-toggle="tooltip" title="{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $post->updated_at)->format('d-m-Y H:i:s')}}">
+                                    {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $post->updated_at)->diffForHumans() }}
+                                </td>
                                 <td>
-                                    <a class="btn btn-success" href="" data-id="{{$post->id}}" data-title="{{$post->titulo}}" data-content="{{$post->contenido}}">
-                                    <span class="fa fa-eye"></span></a>
-                                    <a class="edit-modal btn btn-info" href="" data-id="{{$post->id}}">
-                                    <span class="fa fa-edit"></span></a>
                                     <form action="{{ route('admin.post.destroy', $post->id)}}" method="POST">
+                                        <a class="btn btn-success" href="" data-toggle="tooltip" title="Ver">
+                                        <span class="fa fa-eye"></span></a>
+                                        <a class="edit-modal btn btn-info" href="" data-toggle="tooltip" title="Modificar">
+                                        <span class="fa fa-edit"></span></a>
                                         @csrf
                                         @method('DELETE')
-                                    <button type="submit" class="btn btn-danger" data-id="{{$post->id}}">
+                                    <button type="submit" class="btn btn-danger" data-toggle="tooltip" title="Eliminar">
                                     <span class="fa fa-trash"></span></button>
                                     </form>
                                 </td>

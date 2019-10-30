@@ -8,7 +8,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm-6">
-            <h1>Nueva Publicación</h1>
+            <h1>Modificar Publicación</h1>
           </div>
          </div>
       </div><!-- /.container-fluid -->

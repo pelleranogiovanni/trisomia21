@@ -61,8 +61,8 @@
               <h3 class="card-title">Read Mail</h3>
 
               <div class="card-tools">
-                <a href="#" class="btn btn-tool" data-toggle="tooltip" title="Previous"><i class="fas fa-chevron-left"></i></a>
-                <a href="#" class="btn btn-tool" data-toggle="tooltip" title="Next"><i class="fas fa-chevron-right"></i></a>
+                <a href="#" class="btn btn-tool" data-toggle="tooltip" title="Anterior"><i class="fas fa-chevron-left"></i></a>
+                <a href="#" class="btn btn-tool" data-toggle="tooltip" title="Siguiente"><i class="fas fa-chevron-right"></i></a>
               </div>
             </div>
             <!-- /.card-header -->

@@ -18,7 +18,7 @@ class CreatePostsTable extends Migration
             $table->string('titulo');
             $table->string('slug', 191)->unique();
             $table->mediumText('contenido');
-            $table->string('extracto');
+            $table->string('extracto')->nullable();
             $table->enum('estado', ['PUBLISHED', 'DRAFT'])->default('DRAFT');
             $table->string('ruta_imagen')->nullable();
             $table->unsignedBigInteger('user_create_id');

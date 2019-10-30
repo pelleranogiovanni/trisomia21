@@ -24,16 +24,11 @@ Route::group(['middleware' => 'auth'], function () {
 
 		Route::get('admin/home', 'HomeController@index')->name('admin.home');
 
-		//Route::get('admin/tag', 'TagsController@index')->name('admin.tag.tag');
-
-		//Route::get('admin/categoria', 'CategoriasController@index')->name('admin.categoria.categoria');
-
 		Route::post('admin/home/contacto', 'MensajesController@store')->name('admin.mensajes.store');
 
 		Route::get('admin/home/bandejaentrada', 'MensajesController@index')->name('admin.bandejaentrada')->middleware();
 
 		Route::get('admin/home/bandejaentrada/mensaje/{id}', 'MensajesController@show')->name('admin.leermensaje')->middleware();
-
 
 		// Rutas de Eventos (Agenda)
 
@@ -52,6 +47,21 @@ Route::group(['middleware' => 'auth'], function () {
 	});
 });
 
+/*
+/	Agrupación de todas las rutas relacionadas a las peticiones realizadas por el front-end
+*/
+Route::group(['namespace' => 'Web'], function () {
+	/*
+	/	Retorna todas las publicaciones en una variable llamada $publicaciones
+	/	Los tags son accedidos por medio de un foreach de la siguiente manera $publicacion->tags
+	/	tag->name
+	/	Las publicaciones se retornan paginadas.
+	/	También retorna una colección de datos para la agenda, denominado $eventos.
+	*/
+	Route::get('/home', 'Admin\PostsController@publicados')->name('web.home');
+
+});
+
 Route::get('admin-logout','Auth\LoginController@logout')->name('admin.logout');
 
 Route::get('/', function () {
@@ -60,7 +70,7 @@ Route::get('/', function () {
 
 Route::get('crearcensado', function () {
     return view('admin.censo.crearcensado');
-});
+})->name('admin.censo.create');
 
 Route::get('listarcensado', function () {
     return view('admin.censo.listarcensado');
@@ -77,12 +87,6 @@ Route::get('listartutor', function () {
 
 
 Auth::routes();
-
-
-Route::get('publicados', 'Admin\PostsController@publicados')->name('web.publicados');
-
-Route::get('/home', 'HomeController@index')->name('home');
-
 
 Route::resource('pensiones', 'Admin\PensionsController');
 Route::resource('obrassociales', 'Admin\HealthinsurancesController');
