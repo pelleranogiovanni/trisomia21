@@ -11,9 +11,9 @@ class HomeController extends Controller
 
     public function index(){
        
-        $publicaciones = Post::where('estado', 'PUBLISHED')->get()->paginate(4);
+        $publicaciones = Post::where('estado', 'PUBLISHED')->paginate(4);
 
-        return view('web.home', compact('publicaciones'));
+        return view('web.index', compact('publicaciones'));
 
     }
 
