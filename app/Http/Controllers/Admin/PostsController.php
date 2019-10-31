@@ -82,15 +82,4 @@ class PostsController extends Controller
         return redirect('admin/home')->with('status', 'La publicación ha sido eliminada con éxito.');
     }
 
-    /**
-     * Devolver .
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function publicados(){
-        return Post::where('estado', 'PUBLISHED')->paginate(10);
-    }
-
 }

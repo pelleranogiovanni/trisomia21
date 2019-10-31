@@ -1,5 +1,6 @@
-@extends('layouts.dashboard')
+@extends('admin.layouts.app')
 @section('content')
+<div class="content-wrapper">
 <div class="container">
     <div class="container-fluid">
         <div class="row">
@@ -262,5 +263,7 @@
             </div>
         </div>
     </div>
+</div>
+
 </div>
 @endsection

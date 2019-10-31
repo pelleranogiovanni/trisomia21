@@ -10,9 +10,9 @@ class HomeController extends Controller
 {
 
     public function index(){
-       
-        $publicaciones = Post::where('estado', 'PUBLISHED')->paginate(4);
 
+    	$publicaciones = Post::orderBy('id', 'DESC')->where('estado', 'PUBLISHED')->paginate(4);
+       
         return view('web.index', compact('publicaciones'));
 
     }
