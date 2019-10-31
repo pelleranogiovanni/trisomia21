@@ -12,7 +12,7 @@
           </p>
         </a>
         <ul class="nav nav-treeview">
-          <li class="nav-item has-treeview menu-open">
+          <li class="nav-item has-treeview menu-closed">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>
@@ -28,7 +28,7 @@
           </li>
         </li>
       </ul>
-      <ul class="nav nav-treeview">
+      <ul class="nav nav-treeview" data-accordion="true">
         <li class="nav-item has-treeview menu-closed">
           <a href="#" class="nav-link">
             <i class="nav-icon far fa-calendar-alt" aria-hidden="true"></i>
