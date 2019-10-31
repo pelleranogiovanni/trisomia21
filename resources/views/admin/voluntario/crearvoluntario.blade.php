@@ -168,11 +168,10 @@
                                                 </div>
                                             </div>
 
-
-
                                              <!-- actividad -->
                                             <div class="form-group">
-                                                <label for=""><b>Activiad que quiere hacer</b></label>
+                                                <label for=""><b>¿En que te gustaría colaborar como voluntario en Trisomía 21?</b></label>
+
                                                 <div class="input-group mb-3">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text">

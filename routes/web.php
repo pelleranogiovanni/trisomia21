@@ -68,9 +68,11 @@ Route::get('/', function () {
     return view('web.index');
 });
 
+
 Route::get('crearcensado', function () {
     return view('admin.censo.crearcensado');
 })->name('admin.censo.create');
+
 
 //Ruta de recursos para Censados
 Route::resource('censado', 'Admin\RegisteredsController');

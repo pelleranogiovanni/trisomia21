@@ -51,7 +51,11 @@
                                     <thead>
                                         <tr role="row">
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 170px;">Apellido y Nombre</th>
+
                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 219px;">D.N.I.</th>
+
+                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 219px;">Disponibilidad horaria</th>
+
                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 143px;">Acciones</th>
                                         </tr>
                                     </thead>
@@ -59,8 +63,12 @@
                                         @foreach ($voluntarios as $voluntario)
                                             <tr role="row" class="odd">
                                                 <td><a href="{{route('voluntario.show', $voluntario->id) }}">{{ $voluntario->apellido . ', ' . $voluntario->nombre }}</a></td>
+
                                                 <td>{{ $voluntario->dni }}</td>
                                                 <td>Acciones</td>
+
+                                                <td>{{ $voluntario->tiempodisponible }}</td>
+
                                                 <td>
                                                     <div class="button-group">
                                                         <a href="{{route('voluntario.edit',$voluntario->id)}}" class="btn btn-primary btn-sm">EDITAR</a>
