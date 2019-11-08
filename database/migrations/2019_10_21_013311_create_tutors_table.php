@@ -29,6 +29,7 @@ class CreateTutorsTable extends Migration
             $table->string('ocupacion');
             $table->string('relacionconcensado');
             $table->unsignedBigInteger('obrasocial_id');
+            $table->string('observacion');
 
             $table->timestamps();
 

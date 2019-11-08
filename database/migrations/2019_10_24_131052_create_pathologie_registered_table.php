@@ -15,12 +15,12 @@ class CreatePathologieRegisteredTable extends Migration
     {
         Schema::create('pathologie_registered', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('censado_id');
-            $table->unsignedBigInteger('patologia_id');
+            $table->unsignedBigInteger('registered_id');
+            $table->unsignedBigInteger('pathologie_id');
             $table->timestamps();
 
-            $table->foreign('censado_id')->references('id')->on('registereds');
-            $table->foreign('patologia_id')->references('id')->on('pathologies');
+            $table->foreign('registered_id')->references('id')->on('registereds');
+            $table->foreign('pathologie_id')->references('id')->on('pathologies');
         });
     }
 

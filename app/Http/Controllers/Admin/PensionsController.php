@@ -24,9 +24,7 @@ class PensionsController extends Controller
     public function store(StorePension $request)
     {
         $validated = $request->validated();
-
         $pension = Pension::create($request->all());
-
         return redirect()->route('pensiones.index');
     }
 
@@ -51,11 +49,23 @@ class PensionsController extends Controller
         return redirect()->route('pensiones.index');
     }
 
+    public function buscar(Request $request)
+    {
+        $pensiones = Pension::where('pension', 'like', '%' . $request->buscar . '%')->get();
+        return view('admin.pensiones.index', compact('pensiones'));
+    }
+
     public function destroy($id)
     {
         $pension = Pension::find($id);
         $pension->delete();
 
         return redirect()->route('pensiones.index');
+    }
+
+    public function buscar(Request $request)
+    {
+        $pensiones = Pension::where('pension', 'like', '%' . $request->buscar . '%')->get();
+        return view('admin.pensiones.index', compact('pensiones'));
     }
 }
